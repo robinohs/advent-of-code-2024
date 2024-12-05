@@ -22,3 +22,7 @@ export function getFirstElement<T>(arr: T[]): T {
 export function zip<T, Z>(first: T[], second: Z[]): [T, Z][] {
     return first.map((val, index) => [val, second[index]]);
 }
+
+export function isInteger(str: string): boolean {
+    return Number.isInteger(Number(str));
+}

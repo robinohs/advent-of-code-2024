@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { getFirstElement, zip } from "./utils";
+import { getFirstElement, isInteger, zip } from "./utils";
 
 test('zip [1, 4, 9] and ["b", "c", "d"]', () => {
     expect(zip([1, 4, 9], ["b", "c", "d"]))
@@ -24,4 +24,14 @@ test("getFirstElement has no side_effects", () => {
     const arr: (string | number)[] = ["a", "b", 5];
     getFirstElement(arr);
     expect(arr).toEqual(["a", "b", 5]);
+});
+
+test("isNumber: char is not a number", () => {
+    expect(isInteger("a")).toBeFalse();
+});
+test("isNumber: string is not a number", () => {
+    expect(isInteger("abc")).toBeFalse();
+});
+test("isNumber: zero is a number", () => {
+    expect(isInteger("0")).toBeTrue();
 });
