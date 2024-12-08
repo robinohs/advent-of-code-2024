@@ -2,7 +2,7 @@ import os from "os";
 
 export async function readFile(path: string): Promise<string> {
     const file = Bun.file(path);
-    return await file.text();
+    return (await file.text()).trim();
 }
 
 export async function readLines(path: string): Promise<string[]> {
@@ -58,3 +58,7 @@ Array.prototype.inspect = function <T>(cb: (val: Readonly<T>) => void): T[] {
         return val;
     });
 };
+
+export function delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
